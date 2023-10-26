@@ -14,9 +14,24 @@ public class Player : MonoBehaviour
     public float fireRate = 1;
     public Transform firePoint;
 
+    [Header("Effects")]
+    public ParticleSystem healthparticles;
+
+    [Header("Sounds")]
+    public AudioClip healing;
+
+    private AudioSource audioSource;
+
     private void Start()
     {
         InvokeRepeating(nameof(Shoot), fireRate, fireRate);
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void OnHeal()
+    {
+        healthparticles.Play();
+        audioSource.PlayOneShot(healing);
     }
 
     void Shoot()

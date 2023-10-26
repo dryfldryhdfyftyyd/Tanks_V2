@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     public int maxHealt = 100;
 
     public UnityEvent<int, int> onDamage;
+    public UnityEvent<int, int> onHeal;
     public UnityEvent onDeath;
 
     int hp;
@@ -15,6 +16,13 @@ public class Health : MonoBehaviour
     private void Start()
     {
         hp = maxHealt;
+    }
+
+    public void Heal(int health)
+    {
+        hp += health;
+        hp = hp > maxHealt ? maxHealt : hp;
+        onHeal.Invoke(hp, health);
     }
 
     public void TakeDamage(int damage)

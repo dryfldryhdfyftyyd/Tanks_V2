@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d2a41d3e03b284aa4baa21c11700ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionVfx: {fileID: 4293341153613102926, guid: 861a3dbcb538baa4495bac3777592346, type: 3}
   speed: 20
   lifetime: 30
   maxDamage: 50

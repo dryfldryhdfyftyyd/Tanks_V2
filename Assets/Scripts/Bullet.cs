@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public GameObject explosionVfx;
+
     public float speed = 20;
     public float lifetime = 3;
 
@@ -12,7 +14,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, lifetime);
+        Invoke(nameof(explosionVfx), lifetime);
     }
 
     void Update()
@@ -30,7 +32,12 @@ public class Bullet : MonoBehaviour
             health.TakeDamage(damage);
         }
 
-        //TODO: explode
+        Explode();
+    }
+
+    void Explode()
+    {
+        Instantiate(explosionVfx, transform.position, Quaternion.identity);//Quaternion.identity = explosionVfx.transform.rotation
         Destroy(gameObject);
     }
 }
